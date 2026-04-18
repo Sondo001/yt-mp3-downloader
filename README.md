@@ -20,7 +20,7 @@ Hỗ trợ tải nhiều link cùng lúc, nhanh và dễ sử dụng.
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/your-username/youtube-mp3-downloader.git
+git clone https://github.com/sondo001/youtube-mp3-downloader.git
 cd youtube-mp3-downloader
 ```
 
