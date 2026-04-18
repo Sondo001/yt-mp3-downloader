@@ -1,41 +1,54 @@
-# 🎵 YouTube to MP3 Downloader (Python)
+# 🎬 YouTube Downloader (MP3 / MP4) - Python
 
-Ứng dụng Python giúp tải video từ YouTube và tự động chuyển đổi sang định dạng MP3.
-Hỗ trợ tải nhiều link cùng lúc, nhanh và dễ sử dụng.
+Công cụ Python mạnh mẽ giúp tải video/audio từ YouTube với nhiều tính năng nâng cao:
 
 ---
 
 ## 🚀 Tính năng
 
-* Tải audio chất lượng cao từ YouTube
-* Tự động chuyển sang MP3 (192kbps hoặc 320kbps)
-* Hỗ trợ nhập **nhiều link cùng lúc**
-* Có thể đọc danh sách link từ file `.txt`
-* Lưu file theo tiêu đề video
+* 🎵 Tải và chuyển đổi sang **MP3**
+* 🎥 Tải video **MP4 (720p / 1080p / 4K)**
+* 🎚️ Chọn **bitrate MP3** (128 / 192 / 320 kbps)
+* 📂 Tự động nhận diện **playlist**
+
+  * Tải toàn bộ playlist
+  * Hoặc chọn từng video
+* 🔗 Hỗ trợ nhập **nhiều link cùng lúc**
+* ⚡ Hiển thị **progress (%, tốc độ, ETA)**
+* 🧹 Tự động **làm sạch tên file**
+* 📁 Lưu file theo tiêu đề video
 
 ---
 
 ## 🛠️ Cài đặt
 
-### 1. Clone repository
+### 1. Clone từ GitHub
 
-```bash
-git clone https://github.com/sondo001/youtube-mp3-downloader.git
-cd youtube-mp3-downloader
+```bash id="0x1m2n"
+git clone https://github.com/your-username/youtube-downloader.git
+cd youtube-downloader
 ```
 
-### 2. Cài thư viện cần thiết
+---
 
-```bash
+### 2. Cài thư viện Python
+
+```bash id="c91t8r"
 pip install yt-dlp
 ```
 
-### 3. Cài FFmpeg (bắt buộc để convert MP3)
+---
 
-* Windows: tải FFmpeg và thêm vào PATH
-* Linux:
+### 3. Cài FFmpeg (bắt buộc)
 
-```bash
+#### Windows
+
+* Tải FFmpeg (bản static)
+* Giải nén và thêm vào PATH
+
+#### Linux (Ubuntu/Debian)
+
+```bash id="z72k1a"
 sudo apt install ffmpeg
 ```
 
@@ -43,76 +56,126 @@ sudo apt install ffmpeg
 
 ## ▶️ Cách sử dụng
 
-### Cách 1: Nhập nhiều link (phân cách bằng dấu phẩy)
+Chạy chương trình:
 
-```bash
-python main.py
-```
-
-Ví dụ:
-
-```
-https://youtube.com/xxx, https://youtube.com/yyy
-```
-
----
-
-### Cách 2: Nhập nhiều dòng
-
-* Dán mỗi link một dòng
-* Nhấn Enter 2 lần để bắt đầu tải
-
----
-
-### Cách 3: Dùng file links.txt
-
-Tạo file `links.txt`:
-
-```
-https://youtube.com/xxx
-https://youtube.com/yyy
-https://youtube.com/zzz
-```
-
-Chạy:
-
-```bash
+```bash id="d8e4l1"
 python main.py
 ```
 
 ---
 
-## 📁 Cấu trúc thư mục
+### 🎯 Bước 1: Chọn chế độ
+
+* `1` → MP3 (audio)
+* `2` → MP4 (video)
+
+---
+
+### 🎵 Nếu chọn MP3
+
+Chọn bitrate:
+
+* 128 kbps (nhẹ)
+* 192 kbps (cân bằng)
+* 320 kbps (chất lượng cao)
+
+---
+
+### 🎬 Nếu chọn MP4
+
+Chọn chất lượng:
+
+* 720p
+* 1080p
+* 4K
+
+---
+
+### 🔗 Bước 2: Nhập link
+
+* Dán nhiều link (video hoặc playlist)
+* Mỗi link 1 dòng
+* Nhấn Enter trống để bắt đầu
+
+---
+
+## 📂 Xử lý playlist
+
+Khi phát hiện playlist:
+
+* Hỏi:
+
+  * Tải toàn bộ
+  * Hoặc chọn từng video
+
+Ví dụ chọn:
+
+```id="eg3b1f"
+1,3,5
+```
+
+---
+
+## ⚡ Hiển thị tiến trình
+
+Trong lúc tải sẽ hiển thị:
+
+* % hoàn thành
+* Tốc độ tải
+* Thời gian còn lại (ETA)
+
+---
+
+## 🧹 Làm sạch tên file
+
+Tự động loại bỏ ký tự lỗi:
 
 ```
-youtube-mp3-downloader/
+\ / : * ? " < > |
+```
+
+Giúp file tương thích Windows/Linux/macOS.
+
+---
+
+## 📁 Cấu trúc project
+
+```bash id="9k1f2x"
+youtube-downloader/
 │── main.py
-│── links.txt (tuỳ chọn)
 │── downloads/
 │── README.md
 ```
 
 ---
 
-## ⚙️ Cấu hình
+## ⚙️ Tuỳ chỉnh
 
-Bạn có thể chỉnh chất lượng MP3 trong code:
+### 🔊 Đổi bitrate mặc định
 
-```python
-'preferredquality': '192'  # hoặc '320'
+```python id="zq2w7e"
+return "192"
+```
+
+---
+
+### 🎬 Đổi chất lượng video mặc định
+
+```python id="n3b8ya"
+return "best"
 ```
 
 ---
 
 ## ⚠️ Lưu ý
 
-* Công cụ này chỉ nên dùng cho mục đích cá nhân
-* Hãy đảm bảo bạn có quyền tải nội dung từ YouTube
+* Công cụ chỉ nên dùng cho mục đích cá nhân
+* Đảm bảo bạn có quyền tải nội dung từ YouTube
 * Không sử dụng cho mục đích vi phạm bản quyền
 
 ---
 
-## 📌 Công nghệ sử dụng
+## 🧰 Công nghệ sử dụng
 
 * Python 3
 * yt-dlp
@@ -122,8 +185,11 @@ Bạn có thể chỉnh chất lượng MP3 trong code:
 
 ## ❤️ Đóng góp
 
-Mọi đóng góp đều được hoan nghênh!
-Hãy tạo pull request hoặc issue nếu bạn có ý tưởng mới.
+Mọi đóng góp đều được hoan nghênh:
+
+* Fork repository
+* Tạo pull request
+* Báo lỗi qua issue
 
 ---
 
